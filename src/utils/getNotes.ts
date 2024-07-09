@@ -2,7 +2,9 @@ import puppeteer from 'puppeteer';
 import writeCsvFile from './makeCSVFIle';
 
 async function getNotes(matricula: string, curp: string) {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    timeout: 60_000,
+  });
   const page = await browser.newPage();
 
   await page.goto('https://alumno.conalep.edu.mx/saac');
